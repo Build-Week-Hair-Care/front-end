@@ -102,4 +102,4 @@ const EditReviewPage = props => {
   );
 };
 
-export default UserProfile;
+export default EditReviewPage;
