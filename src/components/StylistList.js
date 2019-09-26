@@ -4,7 +4,7 @@ import StylistCard from './StylistCard';
 import SearchPage from './SearchPage';
 import {ParentStyle} from './Styles';
 
-const stylistApi = `https://reqres.in/api/users?page=2`;
+const stylistApi = `/api/stylists/`;
 
 export default function StylistList() {
  
