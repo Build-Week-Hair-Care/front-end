@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./axiosWithAuth";
 
-const ReviewPage = props => {
+const EditReviewPage = props => {
   const [user, setUser] = useState({
     customers_id: "",
     stylist_id: "",
