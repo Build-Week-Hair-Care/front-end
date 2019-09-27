@@ -98,8 +98,8 @@ const UserProfile = props => {
           </div>
         </Card.Content>
       </Card>
-    </Card.Group>
-  );
+    </Card.Group>// Tyler Quinn was here
+  );// Or was he??
 };
 
 const cardStyle = {

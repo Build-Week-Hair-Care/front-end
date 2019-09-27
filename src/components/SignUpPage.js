@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { registerHandler } from '../actions';
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 class SignUp extends React.Component{
     state = {
@@ -39,57 +40,76 @@ class SignUp extends React.Component{
 
     render(){
         return(
-            <form onSubmit={this.submitForm}>
-                <h2>Register</h2>
-                <label>Name</label>
-                <input 
-                value={this.state.credentials.name}
-                name='name'
-                onChange={this.inputHandler}
-                />
-                <label>Username</label>
-                <input 
-                value={this.state.credentials.username}
-                name='username'
-                onChange={this.inputHandler}
-                />
-                <label>Password</label>
-                <input 
-                type='password'
-                value={this.state.credentials.password}
-                name='password'
-                onChange={this.inputHandler}
-                />
-                <label>Location</label>
-                <input 
-                type='text'
-                value={this.state.credentials.location}
-                name='location'
-                onChange={this.inputHandler}
-                />
-                <label>Specialty</label>
-                <input 
-                type='text'
-                value={this.state.credentials.specialty}
-                name='specialty'
-                onChange={this.inputHandler}
-                />
-                <label>Bio</label>
-                <input 
-                type='text'
-                value={this.state.credentials.bio}
-                name='bio'
-                onChange={this.inputHandler}
-                />
-                <label>Email Address</label>
-                <input 
-                type='email'
-                value={this.state.credentials.email_address}
-                name='email_address'
-                onChange={this.inputHandler}
-                />
-                <button>Submit</button>
-            </form>
+            <div className="boss-container">
+            <div className="tooeasy">
+                <Form onSubmit={this.submitForm}>
+                    <h2>Register</h2>
+                    <Form.Field>
+                    <label>Name</label>
+                    <input 
+                    value={this.state.credentials.name}
+                    name='name'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Username</label>
+                    <input 
+                    value={this.state.credentials.username}
+                    name='username'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Password</label>
+                    <input 
+                    type='password'
+                    value={this.state.credentials.password}
+                    name='password'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Location</label>
+                    <input 
+                    type='text'
+                    value={this.state.credentials.location}
+                    name='location'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Specialty</label>
+                    <input 
+                    type='text'
+                    value={this.state.credentials.specialty}
+                    name='specialty'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Bio</label>
+                    <input 
+                    type='text'
+                    value={this.state.credentials.bio}
+                    name='bio'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Email Address</label>
+                    <input 
+                    type='email'
+                    value={this.state.credentials.email_address}
+                    name='email_address'
+                    onChange={this.inputHandler}
+                    />
+                    </Form.Field>
+                    <Button primary>Submit</Button>
+                </Form>
+            </div>
+            <img src="https://bw-haircare.netlify.com/img/long-hair.jpg"/>
+            </div>
         )
     }
 }

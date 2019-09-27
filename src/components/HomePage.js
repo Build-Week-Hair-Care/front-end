@@ -3,9 +3,11 @@ import {StyledHeader} from './Styles';
 
 
 export default function Homepage () {
-    return (
+    return (<>
         <StyledHeader>
             Welcome to HAIR CARE
         </StyledHeader>
+        <iframe  src="https://bw-haircare.netlify.com/#"/>
+        </>
     );
 }

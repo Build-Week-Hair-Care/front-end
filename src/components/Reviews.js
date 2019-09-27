@@ -22,7 +22,7 @@ const Reviews = props => {
       {reviews.map(r => {
         return (
             <Card>
-            <Image src='{r.photos}' wrapped ui={false} />
+            {r.photos.split("").length > 0 && <Image src={r.photos} wrapped ui={false} />}
             <Card.Content>
               <Card.Header>Recent Review</Card.Header>
               <Card.Description>

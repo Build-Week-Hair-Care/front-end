@@ -9,11 +9,13 @@ import { Route, Switch } from "react-router-dom";
 import UserProfile from "./components/UserProfile";
 import PrivateRoute from "./components/PrivateRoute";
 import Reviews from "./components/Reviews";
+import SideMap from "./components/Map";
 
 function App() {
   return (
     <div className="App">
       <Route path="/" component={Navigation} />
+      <Route exact path="/" component={SideMap}/>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={loginUser} />
