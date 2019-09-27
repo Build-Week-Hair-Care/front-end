@@ -8,7 +8,7 @@ export const NavigationStyle = styled.div`
 `
 export const StyledLink = styled(Link)`
     text-decoration: none;
-    color: navy blue;
+    color: #604d53;
     font-family: helvetica;
     margin-right: 2rem;
 `
@@ -54,7 +54,8 @@ export const StyledButton = styled.button`
 `
 
 export const StyledHeader = styled.h1`
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 4rem;
 `
 
 export const ParentStyle = styled.div`

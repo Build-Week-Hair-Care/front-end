@@ -1,3 +1,6 @@
+html{
+  font-size: 62.5%
+}
 .App {
   text-align: center;
   /* background-image: url('./components/img/blake-wisz-GFrBMipOd_E-unsplash.jpg');
@@ -22,3 +25,90 @@
 .App-link {
   color: #09d3ac;
 }
+.card-group{
+  margin: auto 0;
+  max-width: 90%;
+}
+iframe{
+  width: 103%;
+  min-height: 100vh;
+  overflow-y: hidden;
+}
+.mister{
+  background:#9da3a4;
+  z-index: 1;
+  height:90vh;
+  width: 24%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+   top: 40%;
+   bottom: 0;
+   left: 0;
+  
+
+
+}
+
+.mister a{
+  display: flex;
+  text-align: center;
+    justify-content: center;
+    color: #604d53;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+    max-width: 100px;
+    padding: 30px;
+    margin: auto;
+}
+.mister a:hover{
+  color:#fff;
+
+}
+.steal-your-code{
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-between;
+}
+
+@media (max-width:900px){
+  .mister{
+    top:56%;
+  }
+
+}
+@media (max-width:750px){
+  .mister{
+    top:58%;
+  }
+
+}
+.tooeasy{
+  width: 40%;
+}
+.boss-container{
+  display:flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+.stylist-card {
+  border: 1px solid black;
+}
+.boss-container img{
+  max-width: 50%;
+  height: auto;
+}
+
+
+/* .image {
+  width: 100px;
+  height: 100px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+} */

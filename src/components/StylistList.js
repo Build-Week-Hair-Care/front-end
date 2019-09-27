@@ -4,10 +4,12 @@ import StylistCard from './StylistCard';
 import SearchPage from './SearchPage';
 import {ParentStyle} from './Styles';
 
-const stylistApi = `https://reqres.in/api/users?page=2`;
+const stylistApi = `/api/stylists/`;
 
 export default function StylistList() {
- 
+//  return (
+// <h2> hello world </h2>
+//  )
   const [stylistData, setStylistData] = useState([]);
   const [url, setUrl] = useState(stylistApi);
 
@@ -18,16 +20,16 @@ export default function StylistList() {
     setStylistData(newCharacters)
   }
 
-  useEffect(() => {
-    axios.get(url)
-      .then(res => {
-        //console.log(res.data);
-        setStylistData(res.data.data);
-      })
-      .catch(err => {
-        //console.log(err);
-      })
-  }, [url]);
+  // useEffect(() => {
+  //   axios.get(url)
+  //     .then(res => {
+  //       //console.log(res.data);
+  //       setStylistData(res.data.data);
+  //     })
+  //     .catch(err => {
+  //       //console.log(err);
+  //     })
+  // }, [url]);
 
   return (
     <section>

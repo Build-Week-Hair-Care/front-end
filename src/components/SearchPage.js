@@ -1,49 +1,103 @@
-import React from "react";
-import { Formik, Form, ErrorMessage, Field} from 'formik';
-import * as yup from "yup";
-import {SearchStyle, SearchButton} from './Styles';
+import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "./axiosWithAuth";
+import { Card, Icon, Image, Input, Button } from "semantic-ui-react";
 
-const initialUserForm = {
-  name: '',
-}
+const SearchPage = props => {
+  let [search, setSearch] = useState("");
+  let [stylists, setStylists] = useState([]);
 
-const validate = (formValues) => {
-  const errors = {};
+  useEffect(() => {
+    axiosWithAuth()
+      .get(
+        `https://haircarebackend.herokuapp.com/api/stylists/location/${localStorage.getItem(
+          "search"
+        )}, CA`
+      )
+      .then(res => {
+        console.log(res);
+        setStylists(res.data);
+        // localStorage.setItem('search', `${search}, CA`)
+      })
+      .catch(err => console.log(err));
+  }, []);
 
-  //checking if searchName is correct
-  if (!formValues.name) {
-      errors.name = 'Please enter a valid name!';
-  } else if (formValues.name.length < 2) {
-      errors.name = 'Oops! That is short!';
-  }
-}
-
-//to check for letters and numbers
-const validation = yup.object().shape({
-  name: yup.string().required('Please enter correct name!'),
-})
-
-export default function SearchPage({onSubmit}) {
+  let onChange = e => {
+    setSearch(e.target.value);
+  };
+  const getReview = id => {
+    console.log("get review");
+    // /api/reviews/stylist/:stylist_id
+    localStorage.setItem("s-id", id);
+    props.history.push("/reviews");
+  };
+  let onSumbit = e => {
+    console.log(search);
+    e.preventDefault();
+    console.log("Sumbitted");
+    axiosWithAuth()
+      .get(
+        `https://haircarebackend.herokuapp.com/api/stylists/location/${search}, CA`
+      )
+      .then(res => {
+        console.log(res);
+        setStylists(res.data);
+        localStorage.setItem("search", search);
+      })
+      .catch(err => console.log(err));
+  };
   return (
-    <section>
-
-     <Formik
-            validationSchema= {validation}
-            initialValues={initialUserForm}
-            validate= {validate}
-            onSubmit={onSubmit}
-            render={props => {
-                return (
-                    <Form>
-                        <label>
-                            <SearchStyle name='name' type='text' placeholder='Search for stylist...' />
-                            <ErrorMessage name='name' component='div' />
-                        </label>
-                        <SearchButton type='submit'>Search</SearchButton>
-                    </Form>
-                )
-            }}
+    <div>
+      <form onSubmit={onSumbit}>
+        <Input
+          icon="search"
+          iconPosition="left"
+          placeholder="Search by location..."
+          onChange={onChange}
+          type="text"
+          name="search"
+          // placeholder="Search by Location"
+          value={search}
         />
-    </section>
+        <Button primary>Search</Button>
+        <Card.Group>
+          {stylists.map(style => {
+            return (
+              <Card>
+                <Image
+                  src={`https://picsum.photos/200/300?random=${style.id}`}
+                  wrapped
+                  ui={false}
+                />
+                <Card.Content>
+                  <Card.Header>{style.name}</Card.Header>
+                  <Card.Meta>
+                    <span className="date">{style.location}</span>
+                  </Card.Meta>
+                  <Card.Description>{style.bio}</Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <a href="#" onClick={() => getReview(style.id)}>
+                    <Icon name="hand scissors outline" />
+                    {style.specialty}
+                  </a>
+                </Card.Content>
+              </Card>
+            );
+          })}
+        </Card.Group>
+      </form>
+    </div>
   );
+};
+export default SearchPage;
+
+{
+  /* <div className="stylist-card">
+              <p>{style.name}</p>
+              <p>{style.bio}</p>
+              <p>{style.location}</p>
+              <p>{style.email_address}</p>
+              <p>{style.specialty}</p>
+              <button onClick={() => getReview(style.id)}>Reviews</button>
+            </div> */
 }
