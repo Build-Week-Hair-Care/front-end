@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { axiosWithAuth } from "./axiosWithAuth";
+import { Card, Icon, Image, Input, Button } from "semantic-ui-react";
 
 const Reviews = props => {
   const [reviews, setReviews] = React.useState([]);
@@ -20,11 +21,21 @@ const Reviews = props => {
       Reviews
       {reviews.map(r => {
         return (
-          <div className="stylist-card">
-            <img src={r.photos} classname="image" />
-            <p>Review Text: {r.review_text}</p>
-            {/* <button onClick={() => getReview(style.id)}>Reviews</button> */}
-          </div>
+            <Card>
+            <Image src='{r.photos}' wrapped ui={false} />
+            <Card.Content>
+              <Card.Header>Recent Review</Card.Header>
+              <Card.Description>
+                Review Left: {r.review_text}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <a>
+                <Icon name='paper plane' />
+                22 Views
+              </a>
+            </Card.Content>
+          </Card>
         );
       })}
     </div>
