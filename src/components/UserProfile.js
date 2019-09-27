@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./axiosWithAuth";
+import { Button, Card, Image } from 'semantic-ui-react'
 
 const UserProfile = props => {
+  console.log(props);
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -35,11 +37,11 @@ const UserProfile = props => {
         console.log(err);
       });
   };
-  const handleDelete = () =>{
-      console.log('delete');
-      let id = localStorage.getItem("id");
+  const handleDelete = () => {
+    console.log("delete");
+    let id = localStorage.getItem("id");
 
-      axiosWithAuth()
+    axiosWithAuth()
       .delete(`https://haircarebackend.herokuapp.com/api/stylists/${id}`)
       .then(res => {
         console.log(res);
@@ -50,12 +52,12 @@ const UserProfile = props => {
       .catch(err => {
         console.log(err);
       });
+  };
 
-  }
-
-  useState(() => {
+  useEffect(() => {
     // let id = 1;
     let id = localStorage.getItem("id");
+    console.log(id);
 
     axiosWithAuth()
       .get(`https://haircarebackend.herokuapp.com/api/stylists/${id}`)
@@ -68,57 +70,45 @@ const UserProfile = props => {
         console.log(err);
       });
   }, []);
+  console.log(user);
   return (
-    <div>
-      awef
-      <form onSubmit={handleSubmit}>
-      <input
-        placeholder="name"
-        name="name"
-        value={user.name}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="username"
-        name="username"
-        value={user.username}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="password"
-        name="password"
-        value={user.password}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="location"
-        name="location"
-        value={user.location}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="specialty"
-        name="specialty"
-        value={user.specialty}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="bio"
-        name="bio"
-        value={user.bio}
-        onChange={handleChange}
-      />
-      <input
-        placeholder="email address"
-        name="email_address"
-        value={user.email_address}
-        onChange={handleChange}
-      />
-      <button>Submitto</button>
-      </form>
-      <button onClick={()=>handleDelete()}>DELETE THIS ACCOUNT</button>
-    </div>
+    <Card.Group
+          itemsPerRow="two">  
+          <Card 
+            className="trip-card"
+            style={cardStyle}>
+
+      <Card.Content>  
+        <Card.Header>{user.name}</Card.Header>
+        <Card.Meta>{user.location}</Card.Meta>
+        <Card.Meta>{user.specialty}</Card.Meta>
+        <Card.Meta>{user.email_address}</Card.Meta>
+        <Card.Description>{user.bio}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <div className='trip-btn-container'>
+            <Button
+              floated="right"
+              className="btn add-btn"
+              icon="add"
+              labelPosition="right"
+              content="Add Trip"
+              onClick={() => handleDelete()}>DELETE THIS ACCOUNT
+            </Button>
+          </div>
+        </Card.Content>
+      </Card>
+    </Card.Group>
   );
 };
+
+const cardStyle = {
+  width: '600px',
+  height: '300px',
+  margin: '20px auto',
+  border: '1px solid gray',
+  borderRadius: '3px',
+  boxShadow: '2px 2px lightgray'
+}
 
 export default UserProfile;

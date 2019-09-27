@@ -24,18 +24,13 @@ class Login extends React.Component{
         e.preventDefault();
         this.props.loginHandler(this.state.credentials)
         .then(() => {
-            this.props.history.push("/user");
+            this.props.history.push("/stylist/profile");
         });
-        this.setState({
-            credentials: {
-                username: '',
-                password: ''
-            }
-        })
     }
 
     render(){
         return(
+            
             <form onSubmit={this.submitForm}>
                 <h2>Log In</h2>
                 <label>Username</label>
@@ -51,7 +46,7 @@ class Login extends React.Component{
                 name='password'
                 onChange={this.inputHandler}
                 />
-                <button>submit</button>
+                <button>Submit</button>
             </form>
         )
     }

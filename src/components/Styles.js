@@ -54,7 +54,8 @@ export const StyledButton = styled.button`
 `
 
 export const StyledHeader = styled.h1`
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 4rem;
 `
 
 export const ParentStyle = styled.div`

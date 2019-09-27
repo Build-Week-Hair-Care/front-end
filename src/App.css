@@ -22,3 +22,17 @@
 .App-link {
   color: #09d3ac;
 }
+
+.stylist-card {
+  border: 1px solid black;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}

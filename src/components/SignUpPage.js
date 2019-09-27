@@ -29,27 +29,12 @@ class SignUp extends React.Component{
     submitForm = e => {
         e.preventDefault();
         this.props.registerHandler(this.state.credentials)
-        axios
-        .post('https://haircarebackend.herokuapp.com/stylists/login', this.state.credentials)
-        .then(res =>{
-            console.log(res);
-            this.props.push("/user")
-        })
-        .catch(error =>{
-           console.log(error) 
-        })
-        this.setState({
-            credentials: {
-                name: '',
-                username: '',
-                password: '',
-                location: '',
-                specialty: '',
-                bio: '',
-                email_address: ''
-
-            }
-        })
+        console.log(this.state.credentials)
+       
+        // .then(() =>{
+            this.props.history.push("/login")
+        // })
+        
     }
 
     render(){
